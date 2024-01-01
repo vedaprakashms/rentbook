@@ -6,7 +6,6 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
-
 interface adduser {
   TenantName: string
   TenantMobile: string
@@ -25,6 +24,7 @@ interface adduser {
   OwnerPermanentAddress: string
   OwnerCorrespondenceAddress: string
   rentpaid?: pay
+  _id?: string
 }
 interface pay {
   rent: Date[]

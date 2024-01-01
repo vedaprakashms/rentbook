@@ -1,4 +1,4 @@
-interface adduser {
+export default interface adduser {
   TenantName: string
   TenantMobile: string
   TenantPAN: string
@@ -15,10 +15,9 @@ interface adduser {
   OwnerPAN: string
   OwnerPermanentAddress: string
   OwnerCorrespondenceAddress: string
-  rentpaid?: pay
   _id?: string
+  rentpaid?: pay
 }
-
 interface pay {
   rent: Date[]
   maintance: Date[]

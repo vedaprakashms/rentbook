@@ -33,5 +33,10 @@ export const addtenant = {
   read: (): Promise<adduser[]> =>
     new Promise((resolve, reject) =>
       db.find({}, (err, val: adduser[]) => (err ? reject(err) : resolve(val)))
+    ),
+  delete: (id: string) => {
+    new Promise((resolve, reject) =>
+      db.remove({ _id: id }, {}, (err, val) => (err ? reject(err) : resolve(val)))
     )
+  }
 }
