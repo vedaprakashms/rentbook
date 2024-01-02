@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import navbar from '@renderer/components/navbar.vue'
+import navbar from '@renderer/components/navbar.vue';
+window.addtenant.init().then((r) => {
+  console.log(r)
+})
 </script>
 
 <template>

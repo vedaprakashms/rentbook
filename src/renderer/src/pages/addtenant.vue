@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useToast } from 'vue-toastification';
-const toast = useToast()
-window.addtenant.init().then((r) => {
-  toast.success(r.msg)
-})
+
 const tname = ref('')
 const tmobile = ref('')
 const tPAN = ref('')

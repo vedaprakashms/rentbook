@@ -34,9 +34,18 @@ export const addtenant = {
     new Promise((resolve, reject) =>
       db.find({}, (err, val: adduser[]) => (err ? reject(err) : resolve(val)))
     ),
-  delete: (id: string) => {
-    new Promise((resolve, reject) =>
-      db.remove({ _id: id }, {}, (err, val) => (err ? reject(err) : resolve(val)))
+  delete: async (id: string) => {
+    const k = await new Promise((resolve, reject) =>
+      db.remove({ _id: id }, {}, (err, val) => {
+        //err ? reject(err) : resolve(val)
+        if (err) {
+          return reject({ id, err })
+        } else {
+          return resolve({ id, val })
+        }
+      })
     )
+    console.log(k)
+    return k
   }
 }

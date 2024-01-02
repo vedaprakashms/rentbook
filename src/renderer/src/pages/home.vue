@@ -10,7 +10,7 @@ window.addtenant.read().then((r: adduser[]) => {
 </script>
 <template>
   <div class="flex items-center justify-center">
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 max-h-body overflow-y-auto">
       <homecard v-for="r in result" :key="r.TenantMobile" :tenant="r" />
     </div>
   </div>

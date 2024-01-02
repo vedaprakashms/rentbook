@@ -1,15 +1,30 @@
 <script setup lang="ts">
+import { useToast } from 'vue-toastification';
+
 const props = defineProps<{
   tenant: adduser
 }>()
 const removedoc = () => {
-  window.addtenant.delete(props.tenant._id?.valueOf() as string)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  window.addtenant.delete(props.tenant._id?.valueOf() as string).then((r: any) => {
+    console.log(r)
+    const toast = useToast()
+    toast.success('Remove the Tenant with ID' + r.id, {
+      timeout: 1000,
+      closeButton: true,
+      onClose() {
+        window.location.reload()
+      }
+    })
+  })
 }
 </script>
 <template>
-  <div class="rounded-xl border-2 shadow-2xl m-1">
+  <div class="rounded-xl border-2 shadow-2xl m-1 bg-orange-100">
     <div class="p-5 flex flex-col">
-      <h1 class="text-lg font-Pacifico font-light border-2 rounded-md px-2 text-center capitalize">
+      <h1
+        class="text-2xl font-Pacifico font-light border-2 border-dashed border-rose-300 rounded-md px-2 text-center capitalize"
+      >
         {{ tenant.TenantName }}
       </h1>
       <p class="text-xs text-center font-Lato">ID: {{ tenant._id }}</p>
