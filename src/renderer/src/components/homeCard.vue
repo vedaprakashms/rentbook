@@ -9,7 +9,7 @@ const removedoc = () => {
   window.addtenant.delete(props.tenant._id?.valueOf() as string).then((r: any) => {
     console.log(r)
     const toast = useToast()
-    toast.success('Remove the Tenant with ID' + r.id, {
+    toast.error('Remove the Tenant with ID' + r.id, {
       timeout: 1000,
       closeButton: true,
       onClose() {

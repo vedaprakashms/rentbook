@@ -24,12 +24,11 @@ export const addtenant = {
       }
     }
   },
-  add: async (k: adduser) => {
-    console.log(k)
-    db.insert(k, (e, r) => {
-      e ? console.log : console.log(r)
-    })
-  },
+
+  add: async (k: adduser): Promise<adduser> =>
+    new Promise((resolve, reject) =>
+      db.insert(k, (err, val: adduser) => (err ? reject(err) : resolve(val)))
+    ),
   read: (): Promise<adduser[]> =>
     new Promise((resolve, reject) =>
       db.find({}, (err, val: adduser[]) => (err ? reject(err) : resolve(val)))
