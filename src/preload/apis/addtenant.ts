@@ -6,8 +6,8 @@ import { join } from 'path'
 let db = new Datastore()
 export const addtenant = {
   init: async () => {
-    console.log(app.getPath('documents'))
-    const dir = join(app.getPath('documents'), 'rentdata')
+    console.log(app.getPath('downloads'))
+    const dir = join(app.getPath('downloads'), 'rentdata')
 
     if (!existsSync(dir)) {
       console.log('the directory dosent exist, Creating now')
@@ -31,7 +31,11 @@ export const addtenant = {
     ),
   read: (): Promise<adduser[]> =>
     new Promise((resolve, reject) =>
-      db.find({}, (err, val: adduser[]) => (err ? reject(err) : resolve(val)))
+      db.find({}, (err: Error, val: adduser[]) => (err ? reject(err) : resolve(val)))
+    ),
+  search: (id: string): Promise<adduser[]> =>
+    new Promise((resolve, reject) =>
+      db.find({ _id: id }, (err: Error, val: adduser[]) => (err ? reject(err) : resolve(val)))
     ),
   delete: async (id: string) => {
     const k = await new Promise((resolve, reject) =>

@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
-
+const router = useRouter()
 const props = defineProps<{
   tenant: adduser
 }>()
+const updatedoc = async () => {
+  await router.push({ path: '/show/' + props.tenant._id })
+}
 const removedoc = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   window.addtenant.delete(props.tenant._id?.valueOf() as string).then((r: any) => {
@@ -52,6 +56,7 @@ const removedoc = () => {
         <button
           type="button"
           class="border-2 text-slate-50 text-center font-Oswald font-semibold shadow-md px-2 grow bg-green-700 border-amber-200"
+          @click="updatedoc"
         >
           Update
         </button>

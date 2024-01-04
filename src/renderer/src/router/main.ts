@@ -11,7 +11,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 export const routes = [
   { path: '/', component: homeVue, name: 'Home', icon: 'house' },
   { path: '/add', component: addTenantVue, name: 'Add Tenant', icon: 'user-plus' },
-  { path: '/show', component: showtenantVue, name: 'Show Tenant', icon: 'user-plus' },
+  { path: '/show/:id', component: showtenantVue, name: 'ShowTenant', icon: 'user-plus' },
   { path: '/summary', component: summaryVue, name: 'Summary', icon: 'chart-area' },
   { path: '/about', component: aboutVue, name: 'About', icon: 'address-card' }
 ]

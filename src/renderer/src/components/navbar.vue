@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { routes } from '@renderer/router/main'
-import { useRouter } from 'vue-router'
+import { routes } from '@renderer/router/main';
+import { useRouter } from 'vue-router';
 const rot = useRouter()
 const min = () => {
   window.navbar.minimize()
